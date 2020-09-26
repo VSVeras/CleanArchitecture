@@ -1,0 +1,107 @@
+﻿using CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente;
+using CleanArchitecture.Aplicacao.CasosDeUso.CadatrarCliente;
+using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
+using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarTodosClientes;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mime;
+using System.Threading.Tasks;
+
+namespace CleanArchitecture.Controllers
+{
+    [Route("api/v1/[Controller]")]
+    [Produces(MediaTypeNames.Application.Json)]
+    public class ClienteController : Controller
+    {
+        /*
+            http://localhost:5000/api/v1/cliente
+            {
+                "Nome" : "VSVeras",
+                "DataDeNascimento" : "1970-05-27"
+            }
+        */
+        [HttpPost()]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Novo(
+            [FromBody] NovoCliente novoCliente,
+            [FromServices] ICadatrarNovoCliente<NovoCliente> cadastrarNovoCliente)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await cadastrarNovoCliente.Executar(novoCliente);
+
+            return Ok();
+        }
+
+        [HttpGet()]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ConsultarTodos([FromServices] IConsultarTodosClientes<IEnumerable<TodosClientes>> consultarTodosCliente)
+        {
+            var clientes = await consultarTodosCliente.Executar();
+
+            if (clientes.ToList().Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(clientes);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ConsultarPorId(int id, [FromServices] IConsultaClientePorId<ConsultaPorId, ClientePorId> consultaClientePorId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var clientes = await consultaClientePorId.Executar(new ConsultaPorId() { Id = id });
+
+            if (clientes == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(clientes);
+        }
+
+        /*
+            http://localhost:5000/api/v1/cliente
+            {
+                "Id" : 1,
+                "Nome" : "VSVeras",
+                "DataDeNascimento" : "1970-25-27"
+            }
+         */
+        [HttpPut()]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Atualizar(
+            [FromBody] ClienteExistente clienteExistente,
+            [FromServices] IAtualizarClienteExistente<ClienteExistente> atualizarClienteExistente)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await atualizarClienteExistente.Executar(clienteExistente);
+
+            return Ok();
+        }
+    }
+}
