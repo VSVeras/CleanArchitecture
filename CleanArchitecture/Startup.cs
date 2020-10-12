@@ -1,10 +1,8 @@
-using CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente;
-using CleanArchitecture.Aplicacao.CasosDeUso.CadatrarCliente;
-using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarCliente;
-using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
-using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarTodosClientes;
-using CleanArchitecture.Dominio.Clientes;
-using CleanArchitecture.Infraestrutura.Repositorios;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadatrarCliente;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes;
+using CleanArchitecture.Infraestrutura.IndeversaoDeControle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,11 +26,13 @@ namespace CleanArchitecture
         {
             services.AddControllers();
 
-            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AdicionarDependenciasDaInfraestrutura();
+
             services.AddTransient<ICadatrarNovoCliente<NovoCliente>, CadastrarNovoCliente>();
             services.AddTransient<IAtualizarClienteExistente<ClienteExistente>, AtualizarClienteExistente>();
             services.AddTransient<IConsultarTodosClientes<IEnumerable<TodosClientes>>, ConsultarTodosClientes>();
             services.AddTransient<IConsultaClientePorId<ConsultaPorId, ClientePorId>, ConsultarClientePorId>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

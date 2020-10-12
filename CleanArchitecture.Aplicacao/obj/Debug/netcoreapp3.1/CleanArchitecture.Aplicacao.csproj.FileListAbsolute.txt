@@ -1,0 +1,14 @@
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\bin\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.deps.json
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\bin\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.dll
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\bin\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.pdb
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\bin\Debug\netcoreapp3.1\CleanArchitecture.Dominio.dll
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\bin\Debug\netcoreapp3.1\CleanArchitecture.Infraestrutura.dll
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\bin\Debug\netcoreapp3.1\CleanArchitecture.Infraestrutura.pdb
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\bin\Debug\netcoreapp3.1\CleanArchitecture.Dominio.pdb
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\obj\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.csprojAssemblyReference.cache
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\obj\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.AssemblyInfoInputs.cache
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\obj\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.AssemblyInfo.cs
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\obj\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.csproj.CoreCompileInputs.cache
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\obj\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.csproj.CopyComplete
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\obj\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.dll
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Aplicacao\obj\Debug\netcoreapp3.1\CleanArchitecture.Aplicacao.pdb

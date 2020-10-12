@@ -1,0 +1,9 @@
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\bin\Debug\netcoreapp3.1\CleanArchitecture.Dominio.deps.json
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\bin\Debug\netcoreapp3.1\CleanArchitecture.Dominio.dll
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\bin\Debug\netcoreapp3.1\CleanArchitecture.Dominio.pdb
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\obj\Debug\netcoreapp3.1\CleanArchitecture.Dominio.csprojAssemblyReference.cache
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\obj\Debug\netcoreapp3.1\CleanArchitecture.Dominio.AssemblyInfoInputs.cache
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\obj\Debug\netcoreapp3.1\CleanArchitecture.Dominio.AssemblyInfo.cs
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\obj\Debug\netcoreapp3.1\CleanArchitecture.Dominio.csproj.CoreCompileInputs.cache
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\obj\Debug\netcoreapp3.1\CleanArchitecture.Dominio.dll
+D:\VSVeras\Documents\source\repos\CleanArchitecture\CleanArchitecture.Dominio\obj\Debug\netcoreapp3.1\CleanArchitecture.Dominio.pdb

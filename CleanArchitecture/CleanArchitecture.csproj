@@ -8,5 +8,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArchitecture.Aplicacao\CleanArchitecture.Aplicacao.csproj" />
+  </ItemGroup>
+
 
 </Project>

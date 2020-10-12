@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente;
-using CleanArchitecture.Aplicacao.CasosDeUso.CadatrarCliente;
-using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
-using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarTodosClientes;
+﻿using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadatrarCliente;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -67,14 +67,14 @@ namespace CleanArchitecture.Controllers
                 return BadRequest(ModelState);
             }
 
-            var clientes = await consultaClientePorId.Executar(new ConsultaPorId() { Id = id });
+            var cliente = await consultaClientePorId.Executar(new ConsultaPorId() { Id = id });
 
-            if (clientes == null)
+            if (cliente == null)
             {
                 return NotFound();
             }
 
-            return Ok(clientes);
+            return Ok(cliente);
         }
 
         /*
