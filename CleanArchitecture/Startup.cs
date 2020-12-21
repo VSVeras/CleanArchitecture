@@ -1,5 +1,5 @@
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente;
-using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadatrarCliente;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes;
 using CleanArchitecture.Infraestrutura.IndeversaoDeControle;
@@ -28,11 +28,10 @@ namespace CleanArchitecture
 
             services.AdicionarDependenciasDaInfraestrutura();
 
-            services.AddTransient<ICadatrarNovoCliente<NovoCliente>, CadastrarNovoCliente>();
+            services.AddTransient<ICadastrarNovoCliente<NovoCliente>, CadastrarNovoCliente>();
             services.AddTransient<IAtualizarClienteExistente<ClienteExistente>, AtualizarClienteExistente>();
             services.AddTransient<IConsultarTodosClientes<IEnumerable<TodosClientes>>, ConsultarTodosClientes>();
             services.AddTransient<IConsultaClientePorId<ConsultaPorId, ClientePorId>, ConsultarClientePorId>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

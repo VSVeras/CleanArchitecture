@@ -2034,7 +2034,10 @@
         },
         "runtime": {
           "bin/placeholder/CleanArchitecture.Aplicacao.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "CleanArchitecture.Dominio/1.0.0": {
         "type": "project",
@@ -2081,7 +2084,10 @@
         },
         "runtime": {
           "bin/placeholder/CleanArchitecture.Infraestrutura.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -6837,6 +6843,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "D:\\VSVeras\\Documents\\source\\repos\\CleanArchitecture\\CleanArchitecture.Aplicacao\\CleanArchitecture.Aplicacao.csproj": {
               "projectPath": "D:\\VSVeras\\Documents\\source\\repos\\CleanArchitecture\\CleanArchitecture.Aplicacao\\CleanArchitecture.Aplicacao.csproj"
@@ -6852,6 +6859,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -6870,7 +6878,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

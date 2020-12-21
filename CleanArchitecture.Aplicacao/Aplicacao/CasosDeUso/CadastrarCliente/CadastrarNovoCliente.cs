@@ -1,9 +1,9 @@
 ﻿using CleanArchitecture.Dominio.Dominio.Clientes;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadatrarCliente
+namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente
 {
-    public class CadastrarNovoCliente : ICadatrarNovoCliente<NovoCliente>
+    public class CadastrarNovoCliente : ICadastrarNovoCliente<NovoCliente>
     {
         private readonly IClienteRepository _clienteRepository;
 

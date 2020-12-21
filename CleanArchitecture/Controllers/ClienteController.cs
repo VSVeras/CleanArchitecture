@@ -1,5 +1,5 @@
 ﻿using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente;
-using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadatrarCliente;
+using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes;
 using Microsoft.AspNetCore.Http;
@@ -28,7 +28,7 @@ namespace CleanArchitecture.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Novo(
             [FromBody] NovoCliente novoCliente,
-            [FromServices] ICadatrarNovoCliente<NovoCliente> cadastrarNovoCliente)
+            [FromServices] ICadastrarNovoCliente<NovoCliente> cadastrarNovoCliente)
         {
             if (!ModelState.IsValid)
             {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadatrarCliente
+namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente
 {
     public class NovoCliente
     {
