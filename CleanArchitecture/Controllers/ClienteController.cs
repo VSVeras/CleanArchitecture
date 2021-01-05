@@ -27,7 +27,7 @@ namespace CleanArchitecture.Controllers
             http://localhost:5000/api/v1/cliente
             {
                 "Nome" : "VSVeras",
-                "DataDeNascimento" : "1970-05-27"
+                "DataDeNascimento" : "1970-05-27T00:00:00"
             }
         */
         [HttpPost()]
@@ -89,7 +89,7 @@ namespace CleanArchitecture.Controllers
             http://localhost:5000/api/v1/cliente/1
             {
                 "Nome" : "VSVeras",
-                "DataDeNascimento" : "1970-25-27"
+                "DataDeNascimento" : "1970-05-27T00:00:00"
             }
          */
         [HttpPut("{id}")]
@@ -104,8 +104,8 @@ namespace CleanArchitecture.Controllers
                 return BadRequest(ModelState);
             }
 
-            //Command's e DTO's são coisas e lidam com problemas diferentes
-            var comando = new ClienteExistente(id, contrato.Nome, contrato.DataDeNacimento);
+            //Command's e DTO's são coisas diferentes e lidam com problemas diferentes
+            var comando = new ClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
 
             await _mensageiro.Executar(comando);
 

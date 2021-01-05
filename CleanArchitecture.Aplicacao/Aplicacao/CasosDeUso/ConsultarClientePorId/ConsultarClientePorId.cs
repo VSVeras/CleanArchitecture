@@ -22,7 +22,7 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId
                 return null;
             }
 
-            return new ClientePorId() { Id = cliente.Id, DataDeNacimento = cliente.DataDeNacimento, Nome = cliente.Nome };
+            return new ClientePorId() { Id = cliente.Id, DataDeNacimento = cliente.DataDeNascimento, Nome = cliente.Nome };
         }
     }
 }

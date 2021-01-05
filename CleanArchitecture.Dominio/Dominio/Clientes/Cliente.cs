@@ -6,19 +6,19 @@ namespace CleanArchitecture.Dominio.Dominio.Clientes
     {
         public int Id { get; set; }
         public string Nome { get; private set; }
-        public DateTime DataDeNacimento { get; private set; }
+        public DateTime DataDeNascimento { get; private set; }
 
-        public Cliente(int id, string nome, DateTime dataDeNacimento)
+        public Cliente(int id, string nome, DateTime dataDeNascimento)
         {
             Id = id;
             Nome = nome;
-            DataDeNacimento = dataDeNacimento;
+            DataDeNascimento = dataDeNascimento;
         }
 
-        public Cliente(string nome, DateTime dataDeNacimento)
+        public Cliente(string nome, DateTime dataDeNascimento)
         {
             Nome = nome;
-            DataDeNacimento = dataDeNacimento;
+            DataDeNascimento = dataDeNascimento;
         }
 
         public void MudouDe(string nome)
@@ -26,9 +26,9 @@ namespace CleanArchitecture.Dominio.Dominio.Clientes
             Nome = nome;
         }
 
-        public void NascimentoEm(DateTime data)
+        public void NascimentoEm(DateTime dataDeNascimento)
         {
-            DataDeNacimento = data;
+            DataDeNascimento = dataDeNascimento;
         }
     }
 }

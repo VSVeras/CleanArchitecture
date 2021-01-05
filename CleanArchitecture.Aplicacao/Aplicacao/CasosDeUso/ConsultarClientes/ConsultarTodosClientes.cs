@@ -19,7 +19,7 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes
             var clientes = await _clienteRepository.Todos();
 
             return from cliente in clientes
-                   select new TodosClientes() { Id = cliente.Id, Nome = cliente.Nome, DataDeNacimento = cliente.DataDeNacimento };
+                   select new TodosClientes() { Id = cliente.Id, Nome = cliente.Nome, DataDeNascimento = cliente.DataDeNascimento };
         }
     }
 }

@@ -6,6 +6,6 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public DateTime DataDeNacimento { get; set; }
+        public DateTime DataDeNascimento { get; set; }
     }
 }
