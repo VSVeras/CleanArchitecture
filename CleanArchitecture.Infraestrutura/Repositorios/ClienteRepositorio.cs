@@ -12,7 +12,7 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
 
         public ClienteRepository()
         {
-            clientes.Add(1, new Cliente(1, "VSVeras", new DateTime(1970, 05, 27)));
+            clientes.Add(1, new Cliente(1, "Cliente Qualquer", new DateTime(1970, 05, 27)));
         }
 
         public async Task<IEnumerable<Cliente>> Todos()
