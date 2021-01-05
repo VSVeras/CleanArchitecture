@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Dominio.Dominio.Clientes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,11 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
     public class ClienteRepository : IClienteRepository
     {
         private static Dictionary<int, Cliente> clientes = new Dictionary<int, Cliente>();
+
+        public ClienteRepository()
+        {
+            clientes.Add(1, new Cliente(1, "VSVeras", new DateTime(1970, 05, 27)));
+        }
 
         public async Task<IEnumerable<Cliente>> Todos()
         {

@@ -1,12 +1,20 @@
-﻿using System;
+﻿using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+using System;
 
 namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
 {
-    public class ClienteExistente
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public DateTime DataDeNacimento { get; set; }
 
+    public class ClienteExistente : IComando
+    {
+        public int Id { get; }
+        public string Nome { get; }
+        public DateTime DataDeNacimento { get; }
+
+        public ClienteExistente(int id, string nome, DateTime dataDeNacimento)
+        {
+            Id = id;
+            Nome = nome;
+            DataDeNacimento = dataDeNacimento;
+        }
     }
 }

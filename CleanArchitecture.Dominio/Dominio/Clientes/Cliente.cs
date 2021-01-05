@@ -8,6 +8,13 @@ namespace CleanArchitecture.Dominio.Dominio.Clientes
         public string Nome { get; private set; }
         public DateTime DataDeNacimento { get; private set; }
 
+        public Cliente(int id, string nome, DateTime dataDeNacimento)
+        {
+            Id = id;
+            Nome = nome;
+            DataDeNacimento = dataDeNacimento;
+        }
+
         public Cliente(string nome, DateTime dataDeNacimento)
         {
             Nome = nome;

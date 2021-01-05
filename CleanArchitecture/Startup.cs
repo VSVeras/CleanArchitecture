@@ -2,6 +2,7 @@ using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes;
+using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 using CleanArchitecture.Infraestrutura.IndeversaoDeControle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,9 +30,12 @@ namespace CleanArchitecture
             services.AdicionarDependenciasDaInfraestrutura();
 
             services.AddTransient<ICadastrarNovoCliente<NovoCliente>, CadastrarNovoCliente>();
-            services.AddTransient<IAtualizarClienteExistente<ClienteExistente>, AtualizarClienteExistente>();
             services.AddTransient<IConsultarTodosClientes<IEnumerable<TodosClientes>>, ConsultarTodosClientes>();
             services.AddTransient<IConsultaClientePorId<ConsultaPorId, ClientePorId>, ConsultarClientePorId>();
+
+            services.AddTransient<IManipuladorDeComando<ClienteExistente>, AtualizarClienteExistente>();
+
+            services.AddSingleton<Mensageiro>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

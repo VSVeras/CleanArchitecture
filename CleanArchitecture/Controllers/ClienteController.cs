@@ -2,6 +2,7 @@
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes;
+using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -15,6 +16,13 @@ namespace CleanArchitecture.Controllers
     [Produces(MediaTypeNames.Application.Json)]
     public class ClienteController : Controller
     {
+        private readonly Mensageiro _mensageiro;
+
+        public ClienteController(Mensageiro mensageiro)
+        {
+            _mensageiro = mensageiro;
+        }
+
         /*
             http://localhost:5000/api/v1/cliente
             {
@@ -78,28 +86,27 @@ namespace CleanArchitecture.Controllers
         }
 
         /*
-            http://localhost:5000/api/v1/cliente
+            http://localhost:5000/api/v1/cliente/1
             {
-                "Id" : 1,
                 "Nome" : "VSVeras",
                 "DataDeNascimento" : "1970-25-27"
             }
          */
-        [HttpPut()]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Atualizar(
-            [FromBody] ClienteExistente clienteExistente,
-            [FromServices] IAtualizarClienteExistente<ClienteExistente> atualizarClienteExistente)
+        public async Task<IActionResult> Atualizar(int id, [FromBody] InformacoesDoClienteParaAtualizar contrato)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await atualizarClienteExistente.Executar(clienteExistente);
+            var comando = new ClienteExistente(id, contrato.Nome, contrato.DataDeNacimento);
+
+            await _mensageiro.Executar(comando);
 
             return Ok();
         }
