@@ -12,6 +12,11 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
 
         public ClienteRepository()
         {
+            if (clientes.Count > 0)
+            {
+                return;
+            }
+
             clientes.Add(1, new Cliente(1, "Cliente Qualquer", new DateTime(1970, 05, 27)));
         }
 
@@ -38,11 +43,19 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
 
         public async Task Atualizar(Cliente pessoa)
         {
-            await Task.Run(() =>
+            try
             {
-                clientes.Remove(pessoa.Id);
-                clientes.Add(pessoa.Id, pessoa);
-            });
+                await Task.Run(() =>
+                {
+                    clientes.Remove(pessoa.Id);
+                    clientes.Add(pessoa.Id, pessoa);
+                });
+            }
+            catch
+            {
+                throw new Exception("Não foi possível atualizar o cliente");
+            }
+
         }
 
         public async Task Excluir(int id)

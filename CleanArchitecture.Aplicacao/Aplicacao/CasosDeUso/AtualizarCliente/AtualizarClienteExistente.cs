@@ -1,5 +1,6 @@
 ﻿using CleanArchitecture.Dominio.Dominio.Clientes;
 using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+using System;
 using System.Threading.Tasks;
 
 namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
@@ -13,13 +14,34 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
             _clienteRepository = clienteRepository;
         }
 
-        public async Task Executar(ClienteExistente comando)
+        public async Task<ResultadoDaMensagem> Executar(ClienteExistente comando)
         {
-            var cliente = await _clienteRepository.ObterPor(comando.Id);
-            cliente.MudouDe(comando.Nome);
-            cliente.NascimentoEm(comando.DataDeNacimento);
+            var resultado = new ResultadoDaMensagem();
+            resultado.Status = false;
 
-            await _clienteRepository.Atualizar(cliente);
+            try
+            {
+                var cliente = await _clienteRepository.ObterPor(comando.Id);
+                if (cliente == null)
+                {
+                    resultado.Mensagens.Add("O cliente não foi localizado");
+                    return resultado;
+                }
+
+                cliente.MudouDe(comando.Nome);
+                cliente.NascimentoEm(comando.DataDeNacimento);
+
+                await _clienteRepository.Atualizar(cliente);
+
+                resultado.Status = true;
+                resultado.Mensagens.Add("O cliente foi atualizado");
+            }
+            catch (Exception ex)
+            {
+                resultado.Mensagens.Add($"Ocorreu um erro : {ex.Message}");
+            }
+
+            return resultado;
         }
     }
 }

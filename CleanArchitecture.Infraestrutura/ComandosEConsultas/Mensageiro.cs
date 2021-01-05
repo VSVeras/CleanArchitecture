@@ -12,14 +12,15 @@ namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
             _serviceProvider = serviceProvider;
         }
 
-        public async Task Executar(IComando comando)
+        public async Task<ResultadoDaMensagem> Executar(IComando comando)
         {
-            Type type = typeof(IManipuladorDeComando<>);
-            Type[] typeArgs = { comando.GetType() };
-            Type handlerType = type.MakeGenericType(typeArgs);
+            Type tipo = typeof(IManipuladorDeComando<>);
+            Type[] argumentosDoTipo = { comando.GetType() };
+            Type tipoDeManipulador = tipo.MakeGenericType(argumentosDoTipo);
 
-            dynamic handler = _serviceProvider.GetService(handlerType);
-            await handler.Executar((dynamic)comando);
+            dynamic handler = _serviceProvider.GetService(tipoDeManipulador);
+
+            return await handler.Executar((dynamic)comando);
         }
     }
 }

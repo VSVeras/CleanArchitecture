@@ -34,9 +34,7 @@ namespace CleanArchitecture.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Novo(
-            [FromBody] NovoCliente novoCliente,
-            [FromServices] ICadastrarNovoCliente<NovoCliente> cadastrarNovoCliente)
+        public async Task<IActionResult> Novo([FromBody] NovoCliente novoCliente, [FromServices] ICadastrarNovoCliente<NovoCliente> cadastrarNovoCliente)
         {
             if (!ModelState.IsValid)
             {
@@ -107,9 +105,15 @@ namespace CleanArchitecture.Controllers
             //Command's e DTO's são coisas diferentes e lidam com problemas diferentes
             var comando = new ClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
 
-            await _mensageiro.Executar(comando);
+            var resultado = await _mensageiro.Executar(comando);
+            var mensagens = resultado.Mensagens.Select(itens => itens);
 
-            return Ok();
+            if (!resultado.Status)
+            {
+                return BadRequest(new { erros = mensagens });
+            }
+
+            return Ok(new { informacao = mensagens });
         }
     }
 }

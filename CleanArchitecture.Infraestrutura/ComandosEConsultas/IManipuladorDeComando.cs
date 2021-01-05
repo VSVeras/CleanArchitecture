@@ -4,7 +4,7 @@ namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
 {
     public interface IManipuladorDeComando<TComando> where TComando : IComando
     {
-        Task Executar(TComando comando);
+        Task<ResultadoDaMensagem> Executar(TComando comando);
     }
 
 }
