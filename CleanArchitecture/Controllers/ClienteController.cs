@@ -104,6 +104,7 @@ namespace CleanArchitecture.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Command's e DTO's são coisas e lidam com problemas diferentes
             var comando = new ClienteExistente(id, contrato.Nome, contrato.DataDeNacimento);
 
             await _mensageiro.Executar(comando);
