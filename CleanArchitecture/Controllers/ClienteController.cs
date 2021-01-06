@@ -91,9 +91,8 @@ namespace CleanArchitecture.Controllers
             }
          */
         [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Atualizar(int id, [FromBody] InformacoesDoClienteParaAtualizar contrato)
         {
