@@ -34,7 +34,6 @@ namespace CleanArchitecture
             services.AddTransient<IConsultaClientePorId<ConsultaPorId, ClientePorId>, ConsultarClientePorId>();
 
             services.AddTransient<IManipuladorDeComando<ClienteExistente>, AtualizarClienteExistente>();
-
             services.AddSingleton<Mensageiro>();
         }
 
