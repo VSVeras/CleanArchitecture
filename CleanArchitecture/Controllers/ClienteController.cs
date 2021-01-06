@@ -104,7 +104,6 @@ namespace CleanArchitecture.Controllers
             //Command's e DTO's são coisas diferentes e lidam com problemas diferentes
             var comando = new ClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
             var resultado = await _mensageiro.Executar(comando);
-
             var mensagens = resultado.Mensagens.Select(itens => itens);
             if (!resultado.Status)
             {
