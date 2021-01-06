@@ -16,8 +16,10 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
 
         public async Task<ResultadoDaMensagem> Executar(ClienteExistente comando)
         {
-            var resultado = new ResultadoDaMensagem();
-            resultado.Status = false;
+            var resultado = new ResultadoDaMensagem
+            {
+                Status = true
+            };
 
             try
             {
@@ -33,11 +35,11 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
 
                 await _clienteRepository.Atualizar(cliente);
 
-                resultado.Status = true;
                 resultado.Mensagens.Add("O cliente foi atualizado");
             }
             catch (Exception ex)
             {
+                resultado.Status = false;
                 resultado.Mensagens.Add($"Ocorreu um erro : {ex.Message}");
             }
 
