@@ -5,11 +5,11 @@ namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
 {
     public class Mensageiro
     {
-        private readonly IServiceProvider _serviceProvider;
+        private readonly IServiceProvider _provedorDeServico;
 
-        public Mensageiro(IServiceProvider serviceProvider)
+        public Mensageiro(IServiceProvider provedorDeServico)
         {
-            _serviceProvider = serviceProvider;
+            _provedorDeServico = provedorDeServico;
         }
 
         public async Task<ResultadoDaMensagem> Executar(IComando comando)
@@ -18,9 +18,9 @@ namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
             Type[] argumentosDoTipo = { comando.GetType() };
             Type tipoDeManipulador = tipo.MakeGenericType(argumentosDoTipo);
 
-            dynamic handler = _serviceProvider.GetService(tipoDeManipulador);
+            dynamic manipulador = _provedorDeServico.GetService(tipoDeManipulador);
 
-            return await handler.Executar((dynamic)comando);
+            return await manipulador.Executar((dynamic)comando);
         }
     }
 }
