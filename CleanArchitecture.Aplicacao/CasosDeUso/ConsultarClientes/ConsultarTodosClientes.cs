@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes
+namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes
 {
     public class ConsultarTodosClientes : IConsultarTodosClientes<IEnumerable<TodosClientes>>
     {

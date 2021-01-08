@@ -1,7 +1,7 @@
 ﻿using CleanArchitecture.Dominio.Dominio.Clientes;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente
+namespace CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente
 {
     public class CadastrarNovoCliente : ICadastrarNovoCliente<NovoCliente>
     {

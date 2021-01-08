@@ -1,7 +1,7 @@
-using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente;
-using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente;
-using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId;
-using CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes;
+using CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente;
+using CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente;
+using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
+using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes;
 using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 using CleanArchitecture.Infraestrutura.IndeversaoDeControle;
 using Microsoft.AspNetCore.Builder;

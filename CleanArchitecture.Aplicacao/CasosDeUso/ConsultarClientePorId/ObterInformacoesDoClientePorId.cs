@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId
+namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId
 {
     public class ObterInformacoesDoClientePorId
     {

@@ -1,6 +1,6 @@
 ﻿using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId
+namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId
 {
     public class ObterClientePorId : IConsulta
     {

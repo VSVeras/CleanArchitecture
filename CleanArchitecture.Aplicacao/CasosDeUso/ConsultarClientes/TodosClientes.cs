@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientes
+namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes
 {
     public class TodosClientes
     {

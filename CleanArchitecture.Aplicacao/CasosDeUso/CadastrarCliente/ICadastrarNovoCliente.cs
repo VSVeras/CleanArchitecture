@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.CadastrarCliente
+namespace CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente
 {
     public interface ICadastrarNovoCliente<ObjetoDaRequisicao>
     {

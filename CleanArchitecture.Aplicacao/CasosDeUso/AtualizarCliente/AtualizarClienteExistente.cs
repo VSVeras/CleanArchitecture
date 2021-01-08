@@ -3,7 +3,7 @@ using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 using System;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
+namespace CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente
 {
     public sealed class AtualizarClienteExistente : IManipuladorDeComando<EditarClienteExistente>
     {

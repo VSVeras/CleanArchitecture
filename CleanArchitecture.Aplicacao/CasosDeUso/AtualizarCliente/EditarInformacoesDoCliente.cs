@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
+namespace CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente
 {
     public class EditarInformacoesDoCliente
     {

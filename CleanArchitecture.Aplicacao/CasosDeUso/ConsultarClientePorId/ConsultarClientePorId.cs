@@ -3,7 +3,7 @@ using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 using System;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId
+namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId
 {
     public sealed class ConsultarClientePorId : IManipuladorDeConsulta<ObterClientePorId>
     {
