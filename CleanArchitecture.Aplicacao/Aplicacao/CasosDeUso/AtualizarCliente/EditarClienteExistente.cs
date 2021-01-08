@@ -4,13 +4,13 @@ using System;
 namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
 {
 
-    public class ClienteExistente : IComando
+    public class EditarClienteExistente : IComando
     {
         public int Id { get; }
         public string Nome { get; }
         public DateTime DataDeNacimento { get; }
 
-        public ClienteExistente(int id, string nome, DateTime dataDeNacimento)
+        public EditarClienteExistente(int id, string nome, DateTime dataDeNacimento)
         {
             Id = id;
             Nome = nome;

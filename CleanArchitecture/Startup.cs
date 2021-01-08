@@ -31,9 +31,13 @@ namespace CleanArchitecture
 
             services.AddTransient<ICadastrarNovoCliente<NovoCliente>, CadastrarNovoCliente>();
             services.AddTransient<IConsultarTodosClientes<IEnumerable<TodosClientes>>, ConsultarTodosClientes>();
-            services.AddTransient<IConsultaClientePorId<ConsultaPorId, ClientePorId>, ConsultarClientePorId>();
 
-            services.AddTransient<IManipuladorDeComando<ClienteExistente>, AtualizarClienteExistente>();
+            services.AddTransient<IManipuladorDeComando<EditarClienteExistente>, AtualizarClienteExistente>();
+            services.AddTransient<IManipuladorDeConsulta<ObterClientePorId>, ConsultarClientePorId>();
+
+            //Proxima implementação para consultas com retorno generico, tipo: public class ObterClientePorId : IConsulta<ObterInformacoesDoClientePorId>
+            //services.AddTransient<IManipuladorDeConsulta<ObterClientePorId, ObterInformacoesDoClientePorId>, ConsultarClientePorId>();
+
             services.AddSingleton<Mensageiro>();
         }
 

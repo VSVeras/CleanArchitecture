@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
 {
-    public class Mensageiro
+    public sealed class Mensageiro
     {
         private readonly IServiceProvider _provedorDeServico;
 
@@ -21,6 +21,28 @@ namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
             dynamic manipulador = _provedorDeServico.GetService(tipoDeManipulador);
 
             return await manipulador.Executar((dynamic)comando);
+        }
+
+        public async Task<ResultadoDaMensagem> Executar(IConsulta consulta)
+        {
+            Type tipo = typeof(IManipuladorDeConsulta<>);
+            Type[] argumentosDoTipo = { consulta.GetType() };
+            Type tipoDeManipulador = tipo.MakeGenericType(argumentosDoTipo);
+
+            dynamic manipulador = _provedorDeServico.GetService(tipoDeManipulador);
+
+            return await manipulador.Executar((dynamic)consulta);
+        }
+
+        public async Task<T> Executar<T>(IConsulta<T> consulta)
+        {
+            Type tipo = typeof(IManipuladorDeConsulta<,>);
+            Type[] argumentosDoTipo = { consulta.GetType(), typeof(T) };
+            Type tipoDeManipulador = tipo.MakeGenericType(argumentosDoTipo);
+
+            dynamic manipulador = _provedorDeServico.GetService(tipoDeManipulador);
+
+            return await manipulador.Executar((dynamic)consulta);
         }
     }
 }

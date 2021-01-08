@@ -27,7 +27,14 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
 
         public async Task<Cliente> ObterPor(int id)
         {
-            return await Task.Run(() => clientes.GetValueOrDefault(id));
+            try
+            {
+                return await Task.Run(() => clientes.GetValueOrDefault(id));
+            }
+            catch
+            {
+                throw new Exception("Não foi possível obter o cliente por id");
+            }
         }
 
         public async Task<Cliente> Incluir(Cliente pessoa)

@@ -1,9 +1,11 @@
 ﻿using CleanArchitecture.Dominio.Dominio.Clientes;
+using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+using System;
 using System.Threading.Tasks;
 
 namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId
 {
-    public class ConsultarClientePorId : IConsultaClientePorId<ConsultaPorId, ClientePorId>
+    public sealed class ConsultarClientePorId : IManipuladorDeConsulta<ObterClientePorId>
     {
         private readonly IClienteRepository _clienteRepository;
 
@@ -12,17 +14,32 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.ConsultarClientePorId
             _clienteRepository = clienteRepository;
         }
 
-
-        public async Task<ClientePorId> Executar(ConsultaPorId objetoDaRequisicao)
+        public async Task<ResultadoDaMensagem> Executar(ObterClientePorId consulta)
         {
-            var cliente = await _clienteRepository.ObterPor(objetoDaRequisicao.Id);
-
-            if (cliente == null)
+            var resultado = new ResultadoDaMensagem
             {
-                return null;
+                Status = true
+            };
+
+            try
+            {
+                var cliente = await _clienteRepository.ObterPor(consulta.Id);
+                if (cliente == null)
+                {
+                    resultado.Mensagens.Add("O cliente não foi localizado");
+                    return resultado;
+                }
+
+                resultado.Dados = new ObterInformacoesDoClientePorId(cliente.Id, cliente.Nome, cliente.DataDeNascimento);
+                resultado.Mensagens.Add("O cliente foi localizado");
+            }
+            catch (Exception ex)
+            {
+                resultado.Status = false;
+                resultado.Mensagens.Add($"Ocorreu um erro : {ex.Message}");
             }
 
-            return new ClientePorId() { Id = cliente.Id, DataDeNacimento = cliente.DataDeNascimento, Nome = cliente.Nome };
+            return resultado;
         }
     }
 }

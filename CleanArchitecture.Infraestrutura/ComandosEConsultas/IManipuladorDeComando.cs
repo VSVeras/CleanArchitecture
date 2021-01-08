@@ -6,5 +6,4 @@ namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
     {
         Task<ResultadoDaMensagem> Executar(TComando comando);
     }
-
 }

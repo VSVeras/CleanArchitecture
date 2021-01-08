@@ -66,21 +66,22 @@ namespace CleanArchitecture.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> ConsultarPorId(int id, [FromServices] IConsultaClientePorId<ConsultaPorId, ClientePorId> consultaClientePorId)
+        public async Task<IActionResult> ConsultarPorId(int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var cliente = await consultaClientePorId.Executar(new ConsultaPorId() { Id = id });
-
-            if (cliente == null)
+            var contrato = new ObterClientePorId(id);
+            var resultado = await _mensageiro.Executar(contrato);
+            var mensagens = resultado.Mensagens.Select(itens => itens);
+            if (!resultado.Status)
             {
-                return NotFound();
+                return BadRequest(new { erros = mensagens });
             }
 
-            return Ok(cliente);
+            return Ok(new { informacao = mensagens, dados = resultado.Dados });
         }
 
         /*
@@ -94,15 +95,16 @@ namespace CleanArchitecture.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Atualizar(int id, [FromBody] InformacoesDoClienteParaAtualizar contrato)
+        public async Task<IActionResult> Atualizar(int id, [FromBody] EditarInformacoesDoCliente contrato)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            //Command's e DTO's são coisas diferentes e lidam com problemas diferentes
-            var comando = new ClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
+            //Command's, Query's e DTO's são termos sobrecarregados e fazem coisas diferentes, lidam com problemas diferentes. 
+            //É dessa forma que mantemos a compatibilidade retroativa, se você não precisar dessa compatibilidade pode usar comandos no lugar de dto's.
+            var comando = new EditarClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
             var resultado = await _mensageiro.Executar(comando);
             var mensagens = resultado.Mensagens.Select(itens => itens);
             if (!resultado.Status)
@@ -110,7 +112,7 @@ namespace CleanArchitecture.Controllers
                 return BadRequest(new { erros = mensagens });
             }
 
-            return Ok(new { informacao = mensagens });
+            return Ok(new { informacao = mensagens, dados = resultado.Dados });
         }
     }
 }

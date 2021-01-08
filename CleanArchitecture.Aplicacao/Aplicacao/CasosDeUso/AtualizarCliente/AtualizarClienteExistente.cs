@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
 {
-    public class AtualizarClienteExistente : IManipuladorDeComando<ClienteExistente>
+    public sealed class AtualizarClienteExistente : IManipuladorDeComando<EditarClienteExistente>
     {
         private readonly IClienteRepository _clienteRepository;
 
@@ -14,7 +14,7 @@ namespace CleanArchitecture.Aplicacao.Aplicacao.CasosDeUso.AtualizarCliente
             _clienteRepository = clienteRepository;
         }
 
-        public async Task<ResultadoDaMensagem> Executar(ClienteExistente comando)
+        public async Task<ResultadoDaMensagem> Executar(EditarClienteExistente comando)
         {
             var resultado = new ResultadoDaMensagem
             {
