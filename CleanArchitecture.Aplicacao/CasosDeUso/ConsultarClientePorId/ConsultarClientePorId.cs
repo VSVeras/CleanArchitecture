@@ -24,13 +24,13 @@ namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId
             try
             {
                 var cliente = await _clienteRepository.ObterPor(consulta.Id);
-                if (cliente == null)
+                if (!cliente.Achou)
                 {
                     resultado.Mensagens.Add("O cliente não foi localizado");
                     return resultado;
                 }
 
-                resultado.Dados = new ObterInformacoesDoClientePorId(cliente.Id, cliente.Nome, cliente.DataDeNascimento);
+                resultado.Dados = new ObterInformacoesDoClientePorId(cliente.Valor.Id, cliente.Valor.Nome, cliente.Valor.DataDeNascimento);
                 resultado.Mensagens.Add("O cliente foi localizado");
             }
             catch (Exception ex)

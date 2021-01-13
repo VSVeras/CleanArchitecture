@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Dominio.Dominio.Clientes;
+using CleanArchitecture.Dominio.Padroes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,15 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
             return await Task.Run(() => clientes.Values.ToList());
         }
 
-        public async Task<Cliente> ObterPor(int id)
+        public async Task<Talvez<Cliente>> ObterPor(int id)
         {
             try
             {
-                return await Task.Run(() => clientes.GetValueOrDefault(id));
+                var registro = await Task.Run(() => clientes.GetValueOrDefault(id));
+                if (registro != null)
+                    return Talvez<Cliente>.Algum(registro);
+
+                return Talvez<Cliente>.Nenhum;
             }
             catch
             {

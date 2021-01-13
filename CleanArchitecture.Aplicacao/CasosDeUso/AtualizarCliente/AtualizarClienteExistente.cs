@@ -24,16 +24,16 @@ namespace CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente
             try
             {
                 var cliente = await _clienteRepository.ObterPor(comando.Id);
-                if (cliente == null)
+                if (!cliente.Achou)
                 {
                     resultado.Mensagens.Add("O cliente não foi localizado");
                     return resultado;
                 }
 
-                cliente.MudouDe(comando.Nome);
-                cliente.NascimentoEm(comando.DataDeNacimento);
+                cliente.Valor.MudouDe(comando.Nome);
+                cliente.Valor.NascimentoEm(comando.DataDeNacimento);
 
-                await _clienteRepository.Atualizar(cliente);
+                await _clienteRepository.Atualizar(cliente.Valor);
 
                 resultado.Mensagens.Add("O cliente foi atualizado");
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CleanArchitecture.Dominio.Padroes;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CleanArchitecture.Dominio.Dominio.Clientes
@@ -7,7 +8,7 @@ namespace CleanArchitecture.Dominio.Dominio.Clientes
     {
         Task<IEnumerable<Cliente>> Todos();
 
-        Task<Cliente> ObterPor(int id);
+        Task<Talvez<Cliente>> ObterPor(int id);
 
         Task<Cliente> Incluir(Cliente item);
 
