@@ -33,7 +33,12 @@ namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientesPorNome
                 }
 
                 resultado.Dados = from registro in clientes
-                                  select new ClientesPorNome() { Id = registro.Id, Nome = registro.Nome, DataDeNascimento = registro.DataDeNascimento };
+                                  select new ClientesPorNome()
+                                  {
+                                      Id = registro.Id,
+                                      Nome = registro.Nome,
+                                      DataDeNascimento = registro.DataDeNascimento
+                                  };
                 resultado.Mensagens.Add("Os clientes foram localizados");
             }
             catch (Exception ex)
