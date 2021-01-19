@@ -105,6 +105,8 @@ namespace CleanArchitecture.Controllers
             }
 
             //Command's, Query's e DTO's são termos sobrecarregados e fazem coisas diferentes, lidam com problemas diferentes. 
+            //Commands: Chamadas de método serializáveis
+            //DTOs: Contratos de dados e compatibilidade com versões anteriores
             //É dessa forma que mantemos a compatibilidade retroativa, se você não precisar dessa compatibilidade pode usar comandos no lugar de dto's.
             var comando = new EditarClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
             var resultado = await _mensageiro.Executar(comando);
