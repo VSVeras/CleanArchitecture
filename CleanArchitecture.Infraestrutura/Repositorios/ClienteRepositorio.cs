@@ -46,8 +46,7 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
         {
             return await Task.Run(() =>
             {
-                var id = clientes.Count() + 1;
-                pessoa.Id = id;
+                pessoa.Id = (clientes.Count() + 1);
                 clientes.Add(pessoa);
                 return pessoa;
             });
