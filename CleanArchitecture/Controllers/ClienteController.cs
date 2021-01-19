@@ -133,9 +133,9 @@ namespace CleanArchitecture.Controllers
 
             var contrato = new ObterClientesPorNome(nome);
             var resultado = await _mensageiro.Executar(contrato);
-            if (resultado == null)
+            if (!resultado?.Any() ?? true)
             {
-                return BadRequest(new { erros = "Os clientes não foram localizados" });
+                return BadRequest(new { erros = "Os clientes não foram localizados", dados = resultado });
             }
 
             return Ok(new { informacao = "Os clientes foram localizados", dados = resultado });
