@@ -2,6 +2,7 @@
 using CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes;
+using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientesPorNome;
 using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +63,7 @@ namespace CleanArchitecture.Controllers
             return Ok(clientes);
         }
 
+        //http://localhost:5000/api/v1/cliente/1
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -106,6 +108,29 @@ namespace CleanArchitecture.Controllers
             //É dessa forma que mantemos a compatibilidade retroativa, se você não precisar dessa compatibilidade pode usar comandos no lugar de dto's.
             var comando = new EditarClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
             var resultado = await _mensageiro.Executar(comando);
+            var mensagens = resultado.Mensagens.Select(itens => itens);
+            if (!resultado.Status)
+            {
+                return BadRequest(new { erros = mensagens });
+            }
+
+            return Ok(new { informacao = mensagens, dados = resultado.Dados });
+        }
+
+        //http://localhost:5000/api/v1/Cliente/Nome/Cliente
+        [HttpGet("Nome/{nome}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ConsultarPorNome(string nome)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var contrato = new ObterClientesPorNome(nome);
+            var resultado = await _mensageiro.Executar(contrato);
             var mensagens = resultado.Mensagens.Select(itens => itens);
             if (!resultado.Status)
             {

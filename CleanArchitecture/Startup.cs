@@ -2,6 +2,7 @@ using CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente;
 using CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes;
+using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientesPorNome;
 using CleanArchitecture.Infraestrutura.ComandosEConsultas;
 using CleanArchitecture.Infraestrutura.IndeversaoDeControle;
 using Microsoft.AspNetCore.Builder;
@@ -34,9 +35,7 @@ namespace CleanArchitecture
 
             services.AddTransient<IManipuladorDeComando<EditarClienteExistente>, AtualizarClienteExistente>();
             services.AddTransient<IManipuladorDeConsulta<ObterClientePorId>, ConsultarClientePorId>();
-
-            //Proxima implementação para consultas com retorno generico, tipo: public class ObterClientePorId : IConsulta<ObterInformacoesDoClientePorId>
-            //services.AddTransient<IManipuladorDeConsulta<ObterClientePorId, ObterInformacoesDoClientePorId>, ConsultarClientePorId>();
+            services.AddTransient<IManipuladorDeConsulta<ObterClientesPorNome, ResultadoDaMensagem>, ConsultarClientesPorNome>();
 
             services.AddSingleton<Mensageiro>();
         }

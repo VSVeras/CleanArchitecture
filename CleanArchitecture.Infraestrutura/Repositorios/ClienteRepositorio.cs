@@ -9,7 +9,7 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
 {
     public class ClienteRepository : IClienteRepository
     {
-        private static Dictionary<int, Cliente> clientes = new Dictionary<int, Cliente>();
+        private static List<Cliente> clientes = new List<Cliente>();
 
         public ClienteRepository()
         {
@@ -18,19 +18,19 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
                 return;
             }
 
-            clientes.Add(1, new Cliente(1, "Cliente Qualquer", new DateTime(1970, 05, 27)));
+            clientes.Add(new Cliente(1, "Cliente Qualquer", new DateTime(1970, 05, 27)));
         }
 
         public async Task<IEnumerable<Cliente>> Todos()
         {
-            return await Task.Run(() => clientes.Values.ToList());
+            return await Task.Run(() => clientes.ToList());
         }
 
         public async Task<Talvez<Cliente>> ObterPor(int id)
         {
             try
             {
-                var registro = await Task.Run(() => clientes.GetValueOrDefault(id));
+                var registro = await Task.Run(() => clientes.FirstOrDefault(onde => onde.Id == id));
                 if (registro != null)
                     return Talvez<Cliente>.Algum(registro);
 
@@ -48,7 +48,7 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
             {
                 var id = clientes.Count() + 1;
                 pessoa.Id = id;
-                clientes.Add(id, pessoa);
+                clientes.Add(pessoa);
                 return pessoa;
             });
         }
@@ -59,8 +59,12 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
             {
                 await Task.Run(() =>
                 {
-                    clientes.Remove(pessoa.Id);
-                    clientes.Add(pessoa.Id, pessoa);
+                    var registro = clientes.FirstOrDefault(onde => onde.Id == pessoa.Id);
+                    if (registro != null)
+                    {
+                        clientes.Remove(registro);
+                        clientes.Add(pessoa);
+                    }
                 });
             }
             catch
@@ -72,7 +76,19 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
 
         public async Task Excluir(int id)
         {
-            await Task.Run(() => clientes.Remove(id));
+            await Task.Run(() => clientes.Remove(clientes.FirstOrDefault(onde => onde.Id == id)));
+        }
+
+        public async Task<IEnumerable<Cliente>> ObterPor(string nome)
+        {
+            try
+            {
+                return await Task.Run(() => clientes.Where(onde => onde.Nome.Contains(nome)).ToList());
+            }
+            catch
+            {
+                throw new Exception("Não foi possível obter o cliente por id");
+            }
         }
     }
 }

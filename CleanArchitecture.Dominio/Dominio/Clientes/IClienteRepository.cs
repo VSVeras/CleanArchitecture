@@ -10,6 +10,8 @@ namespace CleanArchitecture.Dominio.Dominio.Clientes
 
         Task<Talvez<Cliente>> ObterPor(int id);
 
+        Task<IEnumerable<Cliente>> ObterPor(string nome);
+
         Task<Cliente> Incluir(Cliente item);
 
         Task Atualizar(Cliente item);
