@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
+namespace CleanArchitecture.Infraestrutura.CQS
 {
     public interface IManipuladorDeComando<TComando> where TComando : IComando
     {

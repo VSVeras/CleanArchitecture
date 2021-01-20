@@ -1,6 +1,6 @@
 ﻿using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes;
 using CleanArchitecture.Dominio.Dominio.Clientes;
-using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+using CleanArchitecture.Infraestrutura.CQS;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

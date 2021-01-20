@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+﻿using CleanArchitecture.Infraestrutura.CQS;
 using System;
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente

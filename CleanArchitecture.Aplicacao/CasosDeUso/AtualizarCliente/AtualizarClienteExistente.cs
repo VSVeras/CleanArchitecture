@@ -1,5 +1,5 @@
 ﻿using CleanArchitecture.Dominio.Dominio.Clientes;
-using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+using CleanArchitecture.Infraestrutura.CQS;
 using System;
 using System.Threading.Tasks;
 

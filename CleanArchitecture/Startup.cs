@@ -3,7 +3,7 @@ using CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientesPorNome;
-using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+using CleanArchitecture.Infraestrutura.CQS;
 using CleanArchitecture.Infraestrutura.IndeversaoDeControle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

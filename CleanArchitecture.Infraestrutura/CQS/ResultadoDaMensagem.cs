@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
+namespace CleanArchitecture.Infraestrutura.CQS
 {
     public class ResultadoDaMensagem
     {

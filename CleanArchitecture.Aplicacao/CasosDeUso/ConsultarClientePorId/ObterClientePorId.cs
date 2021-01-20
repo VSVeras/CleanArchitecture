@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+﻿using CleanArchitecture.Infraestrutura.CQS;
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId
 {

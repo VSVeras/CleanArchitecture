@@ -1,5 +1,5 @@
 ﻿using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes;
-using CleanArchitecture.Infraestrutura.ComandosEConsultas;
+using CleanArchitecture.Infraestrutura.CQS;
 using System.Collections.Generic;
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientesPorNome

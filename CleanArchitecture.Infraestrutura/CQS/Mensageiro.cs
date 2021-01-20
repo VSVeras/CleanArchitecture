@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Infraestrutura.ComandosEConsultas
+namespace CleanArchitecture.Infraestrutura.CQS
 {
     public sealed class Mensageiro
     {
