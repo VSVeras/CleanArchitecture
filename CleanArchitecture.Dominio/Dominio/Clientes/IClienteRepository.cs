@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Dominio.Padroes;
+﻿using CleanArchitecture.Dominio.Comum;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

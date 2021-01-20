@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CleanArchitecture.Dominio.Padroes
+namespace CleanArchitecture.Dominio.Comum
 {
     //Uma solução ao invés do Pattern Null Object
     //https://blog.ploeh.dk/2018/03/26/the-maybe-functor/

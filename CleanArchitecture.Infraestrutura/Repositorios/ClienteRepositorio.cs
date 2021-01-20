@@ -1,5 +1,5 @@
-﻿using CleanArchitecture.Dominio.Dominio.Clientes;
-using CleanArchitecture.Dominio.Padroes;
+﻿using CleanArchitecture.Dominio.Comum;
+using CleanArchitecture.Dominio.Dominio.Clientes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
