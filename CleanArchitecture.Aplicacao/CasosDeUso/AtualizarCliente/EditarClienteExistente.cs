@@ -3,7 +3,6 @@ using System;
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente
 {
-
     public class EditarClienteExistente : IComando
     {
         public int Id { get; }

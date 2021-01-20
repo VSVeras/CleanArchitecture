@@ -15,6 +15,12 @@ namespace CleanArchitecture.Dominio.Dominio.Clientes
             DataDeNascimento = dataDeNascimento;
         }
 
+        public Cliente(string nome, DateTime dataDeNascimento)
+        {
+            Nome = nome;
+            DataDeNascimento = dataDeNascimento;
+        }
+
         public void MudouDe(string nome)
         {
             Nome = nome;

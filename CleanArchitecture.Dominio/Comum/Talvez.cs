@@ -8,7 +8,7 @@ namespace CleanArchitecture.Dominio.Comum
     //https://blog.ploeh.dk/2018/03/26/the-maybe-functor/
     public struct Talvez<T>
     {
-        readonly IEnumerable<T> _valores;
+        private readonly IEnumerable<T> _valores;
 
         public static Talvez<T> Algum(T value)
         {

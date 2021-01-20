@@ -70,7 +70,6 @@ namespace CleanArchitecture.Infraestrutura.Repositorios
             {
                 throw new Exception("Não foi possível atualizar o cliente");
             }
-
         }
 
         public async Task Excluir(int id)

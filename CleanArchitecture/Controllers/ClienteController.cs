@@ -31,6 +31,7 @@ namespace CleanArchitecture.Controllers
                 "DataDeNascimento" : "1970-05-27T00:00:00"
             }
         */
+
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -93,6 +94,7 @@ namespace CleanArchitecture.Controllers
                 "DataDeNascimento" : "1970-05-27T00:00:00"
             }
          */
+
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -104,7 +106,7 @@ namespace CleanArchitecture.Controllers
                 return BadRequest(ModelState);
             }
 
-            //Command's, Query's e DTO's são termos sobrecarregados e fazem coisas diferentes, lidam com problemas diferentes. 
+            //Command's, Query's e DTO's são termos sobrecarregados e fazem coisas diferentes, lidam com problemas diferentes.
             //Commands: Chamadas de método serializáveis
             //DTOs: Contratos de dados e compatibilidade com versões anteriores
             //É dessa forma que mantemos a compatibilidade retroativa, se você não precisar dessa compatibilidade pode usar comandos no lugar de dto's.

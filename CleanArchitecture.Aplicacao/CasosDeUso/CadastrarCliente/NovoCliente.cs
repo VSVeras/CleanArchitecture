@@ -6,6 +6,5 @@ namespace CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente
     {
         public string Nome { get; set; }
         public DateTime DataDeNacimento { get; set; }
-
     }
 }
