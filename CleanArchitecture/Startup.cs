@@ -31,7 +31,7 @@ namespace CleanArchitecture
             services.AdicionarDependenciasDaInfraestrutura();
 
             services.AddTransient<ICadastrarNovoCliente<NovoCliente>, CadastrarNovoCliente>();
-            services.AddTransient<IConsultarTodosClientes<IEnumerable<TodosClientes>>, ConsultarTodosClientes>();
+            services.AddTransient<IConsultarTodosClientes<IEnumerable<ObterTodosClientes>>, ConsultarTodosClientes>();
 
             services.AddTransient<IManipuladorDeComando<EditarClienteExistente>, AtualizarClienteExistente>();
             services.AddTransient<IManipuladorDeConsulta<ObterClientePorId>, ConsultarClientePorId>();

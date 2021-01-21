@@ -52,7 +52,7 @@ namespace CleanArchitecture.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> ConsultarTodos([FromServices] IConsultarTodosClientes<IEnumerable<TodosClientes>> consultarTodosCliente)
+        public async Task<IActionResult> ConsultarTodos([FromServices] IConsultarTodosClientes<IEnumerable<ObterTodosClientes>> consultarTodosCliente)
         {
             var clientes = await consultarTodosCliente.Executar();
 

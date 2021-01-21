@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes
 {
-    public class ConsultarTodosClientes : IConsultarTodosClientes<IEnumerable<TodosClientes>>
+    public class ConsultarTodosClientes : IConsultarTodosClientes<IEnumerable<ObterTodosClientes>>
     {
         private readonly IClienteRepository _clienteRepository;
 
@@ -14,12 +14,12 @@ namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes
             _clienteRepository = clienteRepository;
         }
 
-        public async Task<IEnumerable<TodosClientes>> Executar()
+        public async Task<IEnumerable<ObterTodosClientes>> Executar()
         {
             var clientes = await _clienteRepository.Todos();
 
             return from cliente in clientes
-                   select new TodosClientes() { Id = cliente.Id, Nome = cliente.Nome, DataDeNascimento = cliente.DataDeNascimento };
+                   select new ObterTodosClientes() { Id = cliente.Id, Nome = cliente.Nome, DataDeNascimento = cliente.DataDeNascimento };
         }
     }
 }
