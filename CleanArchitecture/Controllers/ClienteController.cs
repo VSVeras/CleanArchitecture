@@ -93,8 +93,7 @@ namespace CleanArchitecture.Controllers
                 "Nome" : "VSVeras",
                 "DataDeNascimento" : "1970-05-27T00:00:00"
             }
-         */
-
+        */
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

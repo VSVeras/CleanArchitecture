@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientesPorNome
 {
-    public class ObterClientesPorNome : IConsulta<List<ClientesPorNome>>
+    public struct ObterClientesPorNome : IConsulta<List<ClientesPorNome>>
     {
         public string Nome { get; }
 
