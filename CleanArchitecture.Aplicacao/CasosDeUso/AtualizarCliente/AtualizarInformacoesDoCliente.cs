@@ -2,7 +2,7 @@
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.AtualizarCliente
 {
-    public class EditarInformacoesDoCliente
+    public class AtualizarInformacoesDoCliente
     {
         public string Nome { get; set; }
         public DateTime DataDeNascimento { get; set; }

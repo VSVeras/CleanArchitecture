@@ -3,6 +3,8 @@ using CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientes;
 using CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientesPorNome;
+using CleanArchitecture.Dominio.Dominio.Clientes;
+using CleanArchitecture.Infraestrutura.BancoDeDados;
 using CleanArchitecture.Infraestrutura.CQS;
 using CleanArchitecture.Infraestrutura.IndeversaoDeControle;
 using Microsoft.AspNetCore.Builder;
@@ -30,10 +32,13 @@ namespace CleanArchitecture
 
             services.AdicionarDependenciasDaInfraestrutura();
 
-            services.AddTransient<ICadastrarNovoCliente<NovoCliente>, CadastrarNovoCliente>();
+            services.AddTransient<ICadastrarCliente<CadatrarNovoCliente>, CadastrarCliente>();
             services.AddTransient<IConsultarTodosClientes<IEnumerable<ObterTodosClientes>>, ConsultarTodosClientes>();
 
-            services.AddTransient<IManipuladorDeComando<EditarClienteExistente>, AtualizarClienteExistente>();
+            services.AddTransient<IManipuladorDeComando<AtualizarClienteExistente>>(provedor =>
+                new BDRetentativa<AtualizarClienteExistente>(
+                    new AtualizarCliente(provedor.GetService<IClienteRepository>())));
+
             services.AddTransient<IManipuladorDeConsulta<ObterClientePorId>, ConsultarClientePorId>();
             services.AddTransient<IManipuladorDeConsulta<ObterClientesPorNome, List<ClientesPorNome>>, ConsultarClientesPorNome>();
 

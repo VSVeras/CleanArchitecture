@@ -31,19 +31,19 @@ namespace CleanArchitecture.Controllers
                 "DataDeNascimento" : "1970-05-27T00:00:00"
             }
         */
-
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Novo([FromBody] NovoCliente novoCliente, [FromServices] ICadastrarNovoCliente<NovoCliente> cadastrarNovoCliente)
+        public async Task<IActionResult> Cadastrar([FromBody] CadatrarNovoCliente contrato,
+            [FromServices] ICadastrarCliente<CadatrarNovoCliente> cadastrarNovoCliente)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await cadastrarNovoCliente.Executar(novoCliente);
+            await cadastrarNovoCliente.Executar(contrato);
 
             return Ok();
         }
@@ -98,7 +98,7 @@ namespace CleanArchitecture.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Atualizar(int id, [FromBody] EditarInformacoesDoCliente contrato)
+        public async Task<IActionResult> Atualizar(int id, [FromBody] AtualizarInformacoesDoCliente contrato)
         {
             if (!ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace CleanArchitecture.Controllers
             //Commands: Chamadas de método serializáveis
             //DTOs: Contratos de dados e compatibilidade com versões anteriores
             //É dessa forma que mantemos a compatibilidade retroativa, se você não precisar dessa compatibilidade pode usar comandos no lugar de dto's.
-            var comando = new EditarClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
+            var comando = new AtualizarClienteExistente(id, contrato.Nome, contrato.DataDeNascimento);
             var resultado = await _mensageiro.Executar(comando);
             var mensagens = resultado.Mensagens.Select(itens => itens);
             if (!resultado.Status)

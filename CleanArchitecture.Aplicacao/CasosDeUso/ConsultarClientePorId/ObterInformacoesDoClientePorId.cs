@@ -2,7 +2,7 @@
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.ConsultarClientePorId
 {
-    public class ObterInformacoesDoClientePorId
+    public struct ObterInformacoesDoClientePorId
     {
         public int Id { get; }
         public string Nome { get; }

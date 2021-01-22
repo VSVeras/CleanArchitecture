@@ -7,7 +7,6 @@ namespace CleanArchitecture.Infraestrutura.IndeversaoDeControle
     public static class DependenciasDaInfraestrutura
     {
         public static IServiceCollection AdicionarDependenciasDaInfraestrutura(this IServiceCollection services)
-
         {
             services.AddTransient<IClienteRepository, ClienteRepository>();
 

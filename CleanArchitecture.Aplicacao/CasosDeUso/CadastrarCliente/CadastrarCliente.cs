@@ -3,16 +3,16 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente
 {
-    public class CadastrarNovoCliente : ICadastrarNovoCliente<NovoCliente>
+    public class CadastrarCliente : ICadastrarCliente<CadatrarNovoCliente>
     {
         private readonly IClienteRepository _clienteRepository;
 
-        public CadastrarNovoCliente(IClienteRepository clienteRepository)
+        public CadastrarCliente(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
 
-        public async Task Executar(NovoCliente objetoDaRequisicao)
+        public async Task Executar(CadatrarNovoCliente objetoDaRequisicao)
         {
             var cliente = new Cliente(objetoDaRequisicao.Nome, objetoDaRequisicao.DataDeNacimento);
 

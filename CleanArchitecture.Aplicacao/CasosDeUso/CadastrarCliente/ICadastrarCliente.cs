@@ -2,7 +2,7 @@
 
 namespace CleanArchitecture.Aplicacao.CasosDeUso.CadastrarCliente
 {
-    public interface ICadastrarNovoCliente<ObjetoDaRequisicao>
+    public interface ICadastrarCliente<ObjetoDaRequisicao>
     {
         Task Executar(ObjetoDaRequisicao objetoDaRequisicao);
     }
